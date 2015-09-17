@@ -25,14 +25,20 @@ var classArray = [
 
 
 var buttonValue = 0;
+var finalPrint;
+
 
 
 $("button").on("click", function(){
-     classArray = shuffle(classArray);
+     $(".groupNum").remove();
+
+     var workingArray = classArray;
+     
+     workingArray = shuffle(workingArray);
 
      buttonValue = parseInt($(this).text());
      // console.log(buttonValue);
-     var newStuff = arrayToGroups(classArray, buttonValue);
+     var newStuff = arrayToGroups(workingArray, buttonValue);
      console.log(newStuff);
 
      var groupLength = newStuff[0];
@@ -40,17 +46,41 @@ $("button").on("click", function(){
 
 // / Creating group lists
      for(var i = 0; i <buttonValue; i++){
-          // console.log("probably an object");
-          var newGroup = "<ul class='groupNum'> Group " + i + "</ul>";
-          $(".groupList").append(newGroup + newStuff[i]);
+          
+          //ALL appending together//
+         var newGroup = "<li class='groupNum' > Group " + (i + 1) + "<br>" + newStuff[i]+"</li>";
+          
+          $(".groupList").append(newGroup);
+          
 
-          // for(var it = 0; it <= groupLength.length; it++){
-          //      console.log();
-          // }
+ classArray = [
+                    "Aarti",
+                    "Danielle",
+                    "David B.",
+                    "Brian",
+                    "David H.",
+                    "Amelia",
+                    "Geoffrey",
+                    "Jacob",
+                    "Manu",
+                    "John",
+                    "Jonathan",
+                    "Laura",
+                    "Lauren",
+                    "Erick",
+                    "Nicholas",
+                    "Doug",
+                    "Ryan",
+                    "Sarah",
+                    "Zachary",
+                    "Liz"
+                ];
 
-          // $(".groupNum").append(newStuff);
+grouped = [];         
+
+
+
 };
-
 
 
 
@@ -95,6 +125,8 @@ function shuffle(array) {
     }
 
     return array;
+
+
 }
 // var herbGroups = arrayToGroups(classArray, 3);
 // console.log(herbGroups);
@@ -109,19 +141,6 @@ function shuffle(array) {
 
 //      };
 
-//      // create holding array for group
-
-
-
-
-//      // getting random student on click
-//      for(var it = 0; it <= classArray.length; it++){
-//           var selectStudent = randomStudent(19, 0);
-//           $(".groupNum").append(classArray[selectStudent] + " ");
-
-//      }
-
-// });
 
 // // function to find a random student
 // function randomStudent(max , min){
