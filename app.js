@@ -67,11 +67,13 @@ function arrayToGroups(source, groups) {
                     var groupSize = Math.ceil(source.length/groups);
 
                     //clone the source array so we can safely splice it
-                    var queue = source;
+                    var clone = source;
 
                     for (var r=0;r<groups;r++) {
-                      //Grab the next groupful from the queue, and append it to the array of groups
-                      grouped.push(queue.splice(0, groupSize));            
+                      
+
+                      //Grab the next groupful from the clone, and append it to the array of groups
+                      grouped.push(clone.splice(0, groupSize));            
                     }       
             return grouped;
 };
