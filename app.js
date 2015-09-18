@@ -30,27 +30,29 @@ var finalPrint;
 
 
 $("button").on("click", function(){
-     $(".groupNum").remove();
+    $(".groupNum").remove();
 
-     var workingArray = classArray;
+    var workingArray = classArray;
      
-     workingArray = shuffle(workingArray);
+    workingArray = shuffle(workingArray);
 
-     buttonValue = parseInt($(this).text());
-     // console.log(buttonValue);
-     var newStuff = arrayToGroups(workingArray, buttonValue);
-     console.log(newStuff);
+    // get value from button html
+    buttonValue = parseInt($(this).text());
 
-     var groupLength = newStuff[0];
-     console.log(groupLength.length);
+    var newStuff = arrayToGroups(workingArray, buttonValue);
+    console.log(newStuff);
 
-// / Creating group lists
-     for(var i = 0; i <buttonValue; i++){
+    var groupLength = newStuff[0];
+    console.log(groupLength.length);
+
+
+ // Creating group lists
+    for(var i = 0; i <buttonValue; i++){
           
-          //ALL appending together//
-         var newGroup = "<li class='groupNum' > Group " + (i + 1) + "<br>" + newStuff[i]+"</li>";
-          
-          $(".groupList").append(newGroup);
+      //ALL appending together//
+      var newGroup = "<li class='groupNum' > Group " + (i + 1) + "<br>" + newStuff[i]+"</li>";
+        
+      $(".groupList").append(newGroup);
           
 
  classArray = [
@@ -91,22 +93,24 @@ grouped = [];
 // console.log(randomStudent(20 , 1));
 function arrayToGroups(source, groups) { 
 //This is the array of groups to return:
-                    var grouped = [];
+        var grouped = [];
 
-                    //work out the size of the group
-                    var groupSize = Math.ceil(source.length/groups);
+        //work out the size of the group
+        var groupSize = Math.ceil(source.length/groups);
 
-                    //clone the source array so we can safely splice it
-                    var clone = source;
+        //clone the source array so we can safely splice it
+        var clone = source;
 
-                    for (var r=0;r<groups;r++) {
-                      
+        for (var r=0;r<groups;r++) {
+          
 
-                      //Grab the next groupful from the clone, and append it to the array of groups
-                      grouped.push(clone.splice(0, groupSize));            
-                    }       
-            return grouped;
+          //Grab the next groupful from the clone, and append it to the array of groups
+          grouped.push(clone.splice(0, groupSize));            
+        }       
+return grouped;
+
 };
+
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex ;
@@ -128,31 +132,6 @@ function shuffle(array) {
 
 
 }
-// var herbGroups = arrayToGroups(classArray, 3);
-// console.log(herbGroups);
-
-
-     // Creating group lists
-//      for(var i = 1; i <= buttonValue; i++){
-//           // console.log("probably an object");
-
-//           $(".groupList").append("<ul class=\"groupNum" + i + "\">"" Group " + i + "</ul>");
-
-
-//      };
-
-
-// // function to find a random student
-// function randomStudent(max , min){
-//      var calculate = Math.floor(Math.random()*(1+max-min)+min);
-//      return calculate;
-
-
-
-
-
-
-
 
 
                 });
